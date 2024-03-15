@@ -1,7 +1,6 @@
 #include <gtest/gtest.h>
-// #include <../src/aircraft.h>
+#include <../include/aircraft.h>
+#include <../include/aircraft_data.h>
 TEST(AircrafTest, Construction){
-    // Aircraft my_aircraft();
-    int a {1};
-    EXPECT_EQ(a, 1);
+    Aircraft my_aircraft;
 }
