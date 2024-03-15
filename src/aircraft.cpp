@@ -2,18 +2,19 @@
 #include <../include/aircraft_data.h>
 #include <iostream>
 
-Aircraft::Aircraft(AircraftModel model = AircraftModel::AIRCRAFT_1) {
+Aircraft::Aircraft(AircraftModel model) {
   // setting aircraft properties
   this->fill_aircraft_properties(model);
 }
 
 void Aircraft::fill_aircraft_properties(AircraftModel model_enum) {
   switch (model_enum) {
-  case AIRCRAFT_2:
-    break;
 
   default:
-    this->body_elements[0] = Aircraft_1[0];
+    this->aircraft_model = model_enum;
+    for (int i; i<8; i++){
+      this->body_elements[i] = Aircraft_1[i];
+    }
   }
 }
 Aircraft::~Aircraft() {}
