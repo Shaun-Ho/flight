@@ -11,6 +11,7 @@ private:
   Vector Forces;
 
   void fill_aircraft_properties(AircraftModel model_enum);
+  void calculate_aircraft_mass_properties();
 
 public:
   AircraftModel aircraft_model;

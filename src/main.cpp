@@ -4,9 +4,8 @@
 #include <iostream>
 
 int main() {
-  populate_aircraft();
   Aircraft myaircraft = Aircraft(AircraftModel::AIRCRAFT_1);
-  myaircraft.custom_print();
-  std::cout << "Hello World" << std::endl;
+  std::cout << myaircraft.mass << std::endl;
+  std::cout << "End of file" << std::endl;
   return 0;
 }
