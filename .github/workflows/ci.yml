@@ -20,6 +20,9 @@ jobs:
       - name: Configure Project
         uses: threeal/cmake-action@v1.3.0
 
+      - name: Formatting code.
+        run: bash clang-format-all.sh .
+
       - name: Build Project
         run: cmake --build build
 
