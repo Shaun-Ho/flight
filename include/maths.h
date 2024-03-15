@@ -1,5 +1,8 @@
 #pragma once
 
+double degrees_to_radians(double degrees);
+double radians_to_degrees(double radians);
+
 class Vector {
 public:
   float x;

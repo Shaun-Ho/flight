@@ -1,4 +1,9 @@
 #include <../include/maths.h>
+#include <math.h>
+
+double degrees_to_radians(double degrees) { return degrees * M_PI / 180.0; };
+
+double radians_to_degrees(double radians) { return radians * 180.0 / M_PI; };
 
 Vector::Vector(void) {
   x = 0.0;
