@@ -11,4 +11,16 @@ public:
 
   Vector(void);
   Vector(double xi, double yi, double zi);
+
+  // operations
+  Vector &operator+=(Vector u);
+
+  // methods
+  void normalise();
 };
+
+Vector operator*(Vector u, double m);
+Vector operator*(double m, Vector u);
+
+Vector operator/(Vector u, double m);
+Vector operator/(double m, Vector u);

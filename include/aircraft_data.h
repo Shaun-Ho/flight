@@ -11,8 +11,8 @@ typedef struct _BodyElement {
   double dihedral_angle;
   double element_area;
   double flap_incidence;
-  // Vector center_of_gravity;
-  // Vector normal_vector;
+  Vector center_of_gravity;
+  Vector normal_vector;
 
 } BodyElement, *pBodyElement;
 
