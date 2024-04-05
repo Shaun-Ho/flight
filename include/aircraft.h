@@ -17,6 +17,7 @@ public:
   AircraftModel aircraft_model;
   double mass;
   double thrust_setting;
+  Vector center_of_gravity;
   Vector position;
   Vector velocity;
 
