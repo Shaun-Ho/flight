@@ -1,6 +1,5 @@
 #include "maths.h"
 #include <../include/maths.h>
-#include <iostream>
 #include <math.h>
 
 double degrees_to_radians(double degrees) { return degrees * M_PI / 180.0; }
@@ -59,7 +58,6 @@ Matrix3x3::Matrix3x3(void) {
       data[i][j] = 0.0;
     }
   }
-  this->compute_and_set_determinant();
 };
 // clang-format off
 Matrix3x3::Matrix3x3(
@@ -77,7 +75,6 @@ Matrix3x3::Matrix3x3(
   data[2][0] = r3c1;
   data[2][1] = r3c2;
   data[2][2] = r3c3;
-  this->compute_and_set_determinant();
 };
 
 Matrix3x3::Proxy::Proxy(double *_data) : _data(_data) {}
@@ -90,14 +87,15 @@ Matrix3x3::Proxy Matrix3x3::operator[](int index) {
 
 void Matrix3x3::compute_and_set_determinant() {
   double local_determinant =
-      data[0][0] * (data[1][1] * data[2][2] - data[1][2] * data[2][1]) +
-      data[0][1] * (data[1][0] * data[2][2] - data[1][2] * data[0][2]) +
+      data[0][0] * (data[1][1] * data[2][2] - data[1][2] * data[2][1]) -
+      data[0][1] * (data[1][0] * data[2][2] - data[1][2] * data[2][0]) +
       data[0][2] * (data[1][0] * data[2][1] - data[1][1] * data[2][0]);
 
   determinant = (local_determinant == 0.0) ? 1.0 : local_determinant;
 };
 
 Matrix3x3 Matrix3x3::inverse() {
+  this->compute_and_set_determinant();
   return Matrix3x3((data[1][1] * data[2][2] - data[1][2] * data[2][1]),
                    -(data[0][1] * data[2][2] - data[0][2] * data[2][1]),
                    (data[0][1] * data[1][2] - data[0][2] * data[1][1]),

@@ -116,6 +116,7 @@ TEST(MatrixOperations, MatrixSetElement) {
   ASSERT_EQ(matrix[2][1], 0.0);
   ASSERT_EQ(matrix[2][2], 0.0);
 };
+
 TEST(MatrixOperations, MatrixInverse) {
   Matrix3x3 matrix(0.0, -3.0, -2.0, 1.0, -4.0, -2.0, -3.0, 4.0, 1.0);
   Matrix3x3 matrix_inversed = matrix.inverse();

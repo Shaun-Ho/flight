@@ -12,10 +12,8 @@ public:
   Vector(void);
   Vector(double xi, double yi, double zi);
 
-  // operations
   Vector &operator+=(Vector u);
 
-  // methods
   void normalise();
 };
 
