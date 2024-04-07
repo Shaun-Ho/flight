@@ -77,7 +77,7 @@ Matrix3x3::Matrix3x3(
   data[2][2] = r3c3;
 };
 
-Matrix3x3::Proxy::Proxy(double *_data) : _data(_data) {}
+Matrix3x3::Proxy::Proxy(std::array<double, 3>& _data) : _data(_data) {}
 
 double &Matrix3x3::Proxy::operator[](int index) { return _data[index]; };
 

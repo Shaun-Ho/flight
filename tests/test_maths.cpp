@@ -86,15 +86,8 @@ TEST(MatrixOperations, MatrixInitialisation) {
 TEST(MatrixOperations, MatrixDivideByScalar) {
   Matrix3x3 matrix(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
   Matrix3x3 matrix2 = matrix / 2.0;
-  ASSERT_EQ(matrix2[0][0], 0.5);
-  ASSERT_EQ(matrix2[0][1], 1.0);
-  ASSERT_EQ(matrix2[0][2], 1.5);
-  ASSERT_EQ(matrix2[1][0], 2.0);
-  ASSERT_EQ(matrix2[1][1], 2.5);
-  ASSERT_EQ(matrix2[1][2], 3.0);
-  ASSERT_EQ(matrix2[2][0], 3.5);
-  ASSERT_EQ(matrix2[2][1], 4.0);
-  ASSERT_EQ(matrix2[2][2], 4.5);
+  Matrix3x3 matrix_expected(0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5);
+  ASSERT_TRUE(matrix2 == matrix_expected);
 };
 
 TEST(MatrixOperations, MatrixGetElement) {
@@ -106,30 +99,13 @@ TEST(MatrixOperations, MatrixSetElement) {
   Matrix3x3 matrix;
   matrix[0][1] = 1.0;
 
-  ASSERT_EQ(matrix[0][0], 0.0);
-  ASSERT_EQ(matrix[0][1], 1.0);
-  ASSERT_EQ(matrix[0][2], 0.0);
-  ASSERT_EQ(matrix[1][0], 0.0);
-  ASSERT_EQ(matrix[1][1], 0.0);
-  ASSERT_EQ(matrix[1][2], 0.0);
-  ASSERT_EQ(matrix[2][0], 0.0);
-  ASSERT_EQ(matrix[2][1], 0.0);
-  ASSERT_EQ(matrix[2][2], 0.0);
+  Matrix3x3 matrix_expected(0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+  ASSERT_TRUE(matrix == matrix_expected);
 };
 
 TEST(MatrixOperations, MatrixInverse) {
   Matrix3x3 matrix(0.0, -3.0, -2.0, 1.0, -4.0, -2.0, -3.0, 4.0, 1.0);
   Matrix3x3 matrix_inversed = matrix.inverse();
-  // Matrix3x3 matrix_expected(4.0, -5.0, -2.0, 5.0, -6.0, -2.0, -8.0, 9.0, 3.0);
-  // ASSERT_TRUE(matrix_inversed == matrix_expected);
-// };
-  ASSERT_EQ(matrix_inversed[0][0], 4.0);
-  ASSERT_EQ(matrix_inversed[0][1], -5.0);
-  ASSERT_EQ(matrix_inversed[0][2], -2.0);
-  ASSERT_EQ(matrix_inversed[1][0], 5.0);
-  ASSERT_EQ(matrix_inversed[1][1], -6.0);
-  ASSERT_EQ(matrix_inversed[1][2], -2.0);
-  ASSERT_EQ(matrix_inversed[2][0], -8.0);
-  ASSERT_EQ(matrix_inversed[2][1], 9.0);
-  ASSERT_EQ(matrix_inversed[2][2], 3.0);
+  Matrix3x3 matrix_expected(4.0, -5.0, -2.0, 5.0, -6.0, -2.0, -8.0, 9.0, 3.0);
+  ASSERT_TRUE(matrix_inversed == matrix_expected);
 };
