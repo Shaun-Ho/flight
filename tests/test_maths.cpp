@@ -120,7 +120,9 @@ TEST(MatrixOperations, MatrixSetElement) {
 TEST(MatrixOperations, MatrixInverse) {
   Matrix3x3 matrix(0.0, -3.0, -2.0, 1.0, -4.0, -2.0, -3.0, 4.0, 1.0);
   Matrix3x3 matrix_inversed = matrix.inverse();
-
+  // Matrix3x3 matrix_expected(4.0, -5.0, -2.0, 5.0, -6.0, -2.0, -8.0, 9.0, 3.0);
+  // ASSERT_TRUE(matrix_inversed == matrix_expected);
+// };
   ASSERT_EQ(matrix_inversed[0][0], 4.0);
   ASSERT_EQ(matrix_inversed[0][1], -5.0);
   ASSERT_EQ(matrix_inversed[0][2], -2.0);

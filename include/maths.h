@@ -51,9 +51,9 @@ public:
 
   Proxy operator[](int index);
   Matrix3x3 inverse();
+  bool operator==(const Matrix3x3 &other) const;
 
 private:
-
 };
 
 Matrix3x3 operator/(Matrix3x3 m, double s);
