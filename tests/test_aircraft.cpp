@@ -2,7 +2,7 @@
 #include <../include/aircraft_data.h>
 #include <gtest/gtest.h>
 
-TEST(AircrafTest, Construction) {
+TEST(AircraftTest, AircraftConstructor) {
   Aircraft my_aircraft;
   ASSERT_GT(my_aircraft.mass, 0.0);
 }
