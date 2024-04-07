@@ -1,6 +1,6 @@
-#include "maths.h"
 #include <../include/maths.h>
 #include <math.h>
+#include <iostream>
 
 double degrees_to_radians(double degrees) { return degrees * M_PI / 180.0; }
 
@@ -77,12 +77,16 @@ Matrix3x3::Matrix3x3(
   data[2][2] = r3c3;
 };
 
-Matrix3x3::Proxy::Proxy(double *_data) : _data(_data) {}
+Matrix3x3::Proxy::Proxy(std::array<double, 3>& _data) : _data(_data) {}
 
 double &Matrix3x3::Proxy::operator[](int index) { return _data[index]; };
 
 Matrix3x3::Proxy Matrix3x3::operator[](int index) {
   return Proxy(data[index]);
+};
+
+bool Matrix3x3::operator==(const Matrix3x3 &other) const {
+  return this->data == other.data;
 };
 
 Matrix3x3 Matrix3x3::inverse() {
