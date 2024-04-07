@@ -5,6 +5,8 @@
 class Aircraft {
 private:
   BodyElement body_elements[8];
+  Matrix3x3 moment_of_inertia;
+  Matrix3x3 moment_of_inertia_inverse;
   Vector angular_velocity;
   Vector body_velocity;
   Vector moment;
