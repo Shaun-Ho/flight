@@ -53,8 +53,7 @@ public:
   Matrix3x3 inverse();
 
 private:
-  double determinant;
-  void compute_and_set_determinant();
+
 };
 
 Matrix3x3 operator/(Matrix3x3 m, double s);

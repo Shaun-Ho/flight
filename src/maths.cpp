@@ -85,17 +85,15 @@ Matrix3x3::Proxy Matrix3x3::operator[](int index) {
   return Proxy(data[index]);
 };
 
-void Matrix3x3::compute_and_set_determinant() {
-  double local_determinant =
+Matrix3x3 Matrix3x3::inverse() {
+
+  double determinant =
       data[0][0] * (data[1][1] * data[2][2] - data[1][2] * data[2][1]) -
       data[0][1] * (data[1][0] * data[2][2] - data[1][2] * data[2][0]) +
       data[0][2] * (data[1][0] * data[2][1] - data[1][1] * data[2][0]);
 
-  determinant = (local_determinant == 0.0) ? 1.0 : local_determinant;
-};
+  determinant = (determinant == 0.0) ? 1.0 : determinant;
 
-Matrix3x3 Matrix3x3::inverse() {
-  this->compute_and_set_determinant();
   return Matrix3x3((data[1][1] * data[2][2] - data[1][2] * data[2][1]),
                    -(data[0][1] * data[2][2] - data[0][2] * data[2][1]),
                    (data[0][1] * data[1][2] - data[0][2] * data[1][1]),
@@ -105,7 +103,7 @@ Matrix3x3 Matrix3x3::inverse() {
                    (data[1][0] * data[2][1] - data[1][1] * data[2][0]),
                    -(data[0][0] * data[2][1] - data[0][1] * data[2][0]),
                    (data[0][0] * data[1][1] - data[0][1] * data[1][0])) /
-         this->determinant;
+         determinant;
 };
 
 Matrix3x3 operator/(Matrix3x3 m, double s) {
