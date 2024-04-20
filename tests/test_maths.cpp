@@ -13,8 +13,8 @@ TEST(ConversionFunctions, RadiansToDegrees) {
 };
 
 TEST(VectorOperations, VectorAdditionEqual) {
-  Vector vec_1 = Vector(1.0, 2.0, 3.0);
-  Vector vec_2 = Vector(1.0, 2.0, 3.0);
+  Vector<double> vec_1 = Vector<double>(1.0, 2.0, 3.0);
+  Vector<double> vec_2 = Vector<double>(1.0, 2.0, 3.0);
   vec_1 += vec_2;
   ASSERT_EQ(vec_1.x, 2.0);
   ASSERT_EQ(vec_1.y, 4.0);
@@ -22,18 +22,18 @@ TEST(VectorOperations, VectorAdditionEqual) {
 };
 
 TEST(VectorOperations, VectorAddition) {
-  Vector vec_1 = Vector(2.0, 4.0, 6.0);
-  Vector vec_2 = Vector(1.0, 2.0, 3.0);
-  Vector vec_3 = vec_1 + vec_2;
+  Vector<double> vec_1 = Vector<double>(2.0, 4.0, 6.0);
+  Vector<double> vec_2 = Vector<double>(1.0, 2.0, 3.0);
+  Vector<double> vec_3 = vec_1 + vec_2;
   ASSERT_EQ(vec_3.x, 3.0);
   ASSERT_EQ(vec_3.y, 6.0);
   ASSERT_EQ(vec_3.z, 9.0);
 };
 
 TEST(VectorOperations, VectorSubtraction) {
-  Vector vec_1 = Vector(2.0, 4.0, 6.0);
-  Vector vec_2 = Vector(1.0, 2.0, 3.0);
-  Vector vec_3 = vec_1 - vec_2;
+  Vector<double> vec_1 = Vector<double>(2.0, 4.0, 6.0);
+  Vector<double> vec_2 = Vector<double>(1.0, 2.0, 3.0);
+  Vector<double> vec_3 = vec_1 - vec_2;
   ASSERT_EQ(vec_3.x, 1.0);
   ASSERT_EQ(vec_3.y, 2.0);
   ASSERT_EQ(vec_3.z, 3.0);
@@ -41,9 +41,9 @@ TEST(VectorOperations, VectorSubtraction) {
 
 TEST(VectorOperations, VectorMultiplyByDouble) {
 
-  Vector vec_1 = Vector(1.0, 2.0, 3.0);
+  Vector<double> vec_1 = Vector<double>(1.0, 2.0, 3.0);
   double scalar{3.0};
-  Vector vec_2 = vec_1 * scalar;
+  Vector<double> vec_2 = vec_1 * scalar;
   ASSERT_EQ(vec_2.x, 3.0);
   ASSERT_EQ(vec_2.y, 6.0);
   ASSERT_EQ(vec_2.z, 9.0);
@@ -51,28 +51,28 @@ TEST(VectorOperations, VectorMultiplyByDouble) {
 
 TEST(VectorOperations, VectorDivideByDouble) {
 
-  Vector vec_1 = Vector(1.0, 2.0, 4.0);
+  Vector<double> vec_1 = Vector<double>(1.0, 2.0, 4.0);
   double scalar{2.0};
-  Vector vec_2 = vec_1 / scalar;
+  Vector<double> vec_2 = vec_1 / scalar;
   ASSERT_EQ(vec_2.x, 0.5);
   ASSERT_EQ(vec_2.y, 1.0);
   ASSERT_EQ(vec_2.z, 2.0);
 }
 
 TEST(VectorOperations, VectorNormalisation) {
-  Vector vec_1 = Vector(0.0, 0.0, 2.0);
+  Vector<double> vec_1 = Vector<double>(0.0, 0.0, 2.0);
   vec_1.normalise();
   ASSERT_EQ(vec_1.x, 0.0);
   ASSERT_EQ(vec_1.y, 0.0);
   ASSERT_EQ(vec_1.z, 1.0);
 
-  Vector vec_2 = Vector(0.0, 2.0, 0.0);
+  Vector<double> vec_2 = Vector<double>(0.0, 2.0, 0.0);
   vec_2.normalise();
   ASSERT_EQ(vec_2.x, 0.0);
   ASSERT_EQ(vec_2.y, 1.0);
   ASSERT_EQ(vec_2.z, 0.0);
 
-  Vector vec_3 = Vector(2.0, 0.0, 0.0);
+  Vector<double> vec_3 = Vector<double>(2.0, 0.0, 0.0);
   vec_3.normalise();
   ASSERT_EQ(vec_3.x, 1.0);
   ASSERT_EQ(vec_3.y, 0.0);

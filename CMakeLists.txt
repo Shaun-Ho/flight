@@ -13,11 +13,11 @@ project(
   LANGUAGES CXX)
 
 # Header files (relative to "include" directory)
-set(HEADERS aircraft_data.h aircraft.h maths.h)
+set(HEADERS maths.h aircraft_data.h aircraft.h)
 
 # Source files (relative to "src" directory)
 
-set(SOURCE_FILES aircraft_data.cpp aircraft.cpp maths.cpp)
+set(SOURCE_FILES maths.cpp aircraft_data.cpp aircraft.cpp)
 set(SOURCES ${SOURCE_FILES} main.cpp)
 
 list(TRANSFORM HEADERS PREPEND "include/")

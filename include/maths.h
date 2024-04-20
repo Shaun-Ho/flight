@@ -4,29 +4,28 @@
 double degrees_to_radians(double degrees);
 double radians_to_degrees(double radians);
 
-class Vector {
+template <typename T> class Vector {
 public:
-  float x;
-  float y;
-  float z;
+  T x;
+  T y;
+  T z;
 
   Vector(void);
-  Vector(double xi, double yi, double zi);
+  Vector(T xi, T yi, T zi);
 
   Vector &operator+=(Vector u);
 
   void normalise();
 };
 
-Vector operator+(Vector u, Vector v);
+template <typename T> Vector<T> operator+(Vector<T> u, Vector<T> v);
 
-Vector operator-(Vector u, Vector v);
+template <typename T> Vector<T> operator-(Vector<T> u, Vector<T> v);
 
-Vector operator*(Vector u, double m);
-Vector operator*(double m, Vector u);
+template <typename T> Vector<T> operator*(Vector<T> u, T m);
+template <typename T> Vector<T> operator*(T m, Vector<T> u);
 
-Vector operator/(Vector u, double m);
-Vector operator/(double m, Vector u);
+Vector<double> operator/(Vector<double> u, double m);
 
 class Matrix3x3 {
 
@@ -44,11 +43,11 @@ public:
   // clang-format on
   class Proxy {
   public:
-    Proxy(std::array<double,3>& _data);
+    Proxy(std::array<double, 3> &_data);
     double &operator[](int index);
 
   private:
-    std::array<double,3>& _data;
+    std::array<double, 3> &_data;
   };
 
   Proxy operator[](int index);
