@@ -93,7 +93,7 @@ void Aircraft::calculate_aircraft_mass_properties() {
   }
 
   // clang-format off
-  Matrix3x3 moment_of_inertia(
+  Matrix3x3<double> moment_of_inertia(
      Ixx, -Ixy, -Ixz,
     -Ixy,  Iyy, -Iyz,
     -Ixz, -Iyz,  Izz
