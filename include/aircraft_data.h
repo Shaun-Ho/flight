@@ -17,3 +17,4 @@ typedef struct _BodyElement {
 } BodyElement, *pBodyElement;
 
 extern BodyElement Aircraft_1[8];
+
