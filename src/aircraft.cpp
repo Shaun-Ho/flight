@@ -34,15 +34,15 @@ void Aircraft::calculate_aircraft_mass_properties() {
         degrees_to_radians(this->body_elements[i].incidence_angle);
     double dihedral_radians =
         degrees_to_radians(this->body_elements[i].dihedral_angle);
-    this->body_elements[i].normal_vector =
-        Vector(std::sin(incidence_radians),
-               std::cos(incidence_radians) * std::sin(dihedral_radians),
-               std::cos(incidence_radians) * std::sin(dihedral_radians));
+    this->body_elements[i].normal_vector = Vector<double>(
+        std::sin(incidence_radians),
+        std::cos(incidence_radians) * std::sin(dihedral_radians),
+        std::cos(incidence_radians) * std::sin(dihedral_radians));
     this->body_elements[i].normal_vector.normalise();
   }
 
   // calculating centre of gravity
-  Vector moment;
+  Vector<double> moment;
   for (int i{0}; i < 8; i++) {
     moment += this->body_elements[i].mass *
               this->body_elements[i].coordinates_from_tail;

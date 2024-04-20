@@ -5,14 +5,14 @@ enum AircraftModel { AIRCRAFT_1, AIRCRAFT_2 };
 
 typedef struct _BodyElement {
   double mass;
-  Vector coordinates_from_tail;
-  Vector local_inertia;
+  Vector<double> coordinates_from_tail;
+  Vector<double> local_inertia;
   double incidence_angle;
   double dihedral_angle;
   double element_area;
   double flap_incidence;
-  Vector center_of_gravity;
-  Vector normal_vector;
+  Vector<double> center_of_gravity;
+  Vector<double> normal_vector;
 
 } BodyElement, *pBodyElement;
 
