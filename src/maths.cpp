@@ -31,6 +31,10 @@ template <typename T> Vector<T> &Vector<T>::operator+=(Vector u) {
   return *this;
 }
 
+template <typename T> bool Vector<T>::operator==(Vector u) {
+  return (x == u.x) && (y == u.y) && (z == u.z);
+}
+
 template <typename T> Vector<T> operator+(Vector<T> u, Vector<T> v) {
   return Vector<T>(u.x + v.x, u.y + v.y, u.z + v.z);
 }

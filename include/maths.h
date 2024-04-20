@@ -13,7 +13,8 @@ public:
   Vector(void);
   Vector(T xi, T yi, T zi);
 
-  Vector &operator+=(Vector u);
+  Vector &operator+=(Vector<T> u);
+  bool operator==(Vector<T> u);
 
   void normalise();
 };
