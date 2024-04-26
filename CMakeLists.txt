@@ -48,7 +48,7 @@ set(gtest_force_shared_crt
 FetchContent_MakeAvailable(googletest)
 
 # Setting testing variables
-set(TEST_SOURCES test_aircraft.cpp test_maths.cpp)
+set(TEST_SOURCES test_aircraft.cpp test_maths.cpp test_aircraft_data.cpp)
 list(TRANSFORM TEST_SOURCES PREPEND "tests/")
 
 add_executable(test_${PROJECT_NAME} ${TEST_SOURCES} ${SOURCE_FILES})
