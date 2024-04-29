@@ -105,7 +105,7 @@ read_lifting_surface_performance(AircraftLiftingSurface lifting_surface) {
     std::cerr << "Error: unable to open file: " << file_name << std::endl;
   }
   return AerofoilPerformance(aerofoil_name, lifting_surface,
-                              std::move(data_file));
+                             std::move(data_file));
 };
 
 double AerofoilPerformance::interpolate_lift(double angle_of_attack,
