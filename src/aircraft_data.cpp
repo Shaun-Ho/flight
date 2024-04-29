@@ -33,18 +33,22 @@ BodyElement Aircraft_1[8] = {
      Vector<double>(0.0, 0.0, 0.0)}};
 
 AerofoilPerformance::AerofoilPerformance(
-    std::string aerofoil_name, std::vector<double> angle_of_attack_array,
+    std::string aerofoil_name, AircraftLiftingSurface lifting_surface,
+    std::vector<double> angle_of_attack_array,
     std::vector<double> lift_coefficients_array,
     std::vector<double> drag_coefficients_array) {
   name = aerofoil_name;
   angle_of_attacks = angle_of_attack_array;
   lift_coefficients = lift_coefficients_array;
   drag_coefficients = drag_coefficients_array;
+  this->lifting_surface = lifting_surface;
 }
 
 AerofoilPerformance::AerofoilPerformance(std::string aerofoil_name,
+                                         AircraftLiftingSurface lifting_surface,
                                          std::ifstream file) {
   name = aerofoil_name;
+  this->lifting_surface = lifting_surface;
   int max_size{100};
   data_points = 0;
   std::string line;
@@ -65,6 +69,7 @@ AerofoilPerformance::AerofoilPerformance(std::string aerofoil_name,
     angle_of_attacks.push_back(angle);
     lift_coefficients.push_back(lift);
     drag_coefficients.push_back(drag);
+    data_points++;
   }
 }
 
@@ -99,5 +104,38 @@ read_lifting_surface_performance(AircraftLiftingSurface lifting_surface) {
   if (!data_file.is_open()) {
     std::cerr << "Error: unable to open file: " << file_name << std::endl;
   }
-  return AerofoilPerformance(aerofoil_name, std::move(data_file));
+  return AerofoilPerformance(aerofoil_name, lifting_surface,
+                              std::move(data_file));
+};
+
+double AerofoilPerformance::interpolate_lift(double angle_of_attack,
+                                             double flap_angle) {
+  double lift;
+  for (int i = 0; i < data_points; i++) {
+    if ((angle_of_attacks[i] <= angle_of_attack) &&
+        (angle_of_attacks[i + 1] > angle_of_attack)) {
+      lift = lift_coefficients[i] -
+             (angle_of_attacks[i] - angle_of_attack) *
+                 (lift_coefficients[i] - lift_coefficients[i + 1]) /
+                 (angle_of_attacks[i] - angle_of_attacks[i + 1]);
+      break;
+    }
+  }
+  return lift;
+};
+
+double AerofoilPerformance::interpolate_drag(double angle_of_attack,
+                                             double flap_angle) {
+  double drag;
+  for (int i = 0; i < data_points; i++) {
+    if ((angle_of_attacks[i] <= angle_of_attack) &&
+        (angle_of_attacks[i + 1] > angle_of_attack)) {
+      drag = drag_coefficients[i] -
+             (angle_of_attacks[i] - angle_of_attack) *
+                 (drag_coefficients[i] - drag_coefficients[i + 1]) /
+                 (angle_of_attacks[i] - angle_of_attacks[i + 1]);
+      break;
+    }
+  }
+  return drag;
 };

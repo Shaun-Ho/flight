@@ -30,6 +30,7 @@ enum AircraftLiftingSurface {
 class AerofoilPerformance {
 private:
   int data_points;
+  AircraftLiftingSurface lifting_surface;
 
 public:
   std::string name;
@@ -38,11 +39,15 @@ public:
   std::vector<double> drag_coefficients;
 
   AerofoilPerformance(std::string aerofoil_name,
+                      AircraftLiftingSurface lifting_surface,
                       std::vector<double> angle_of_attacks,
                       std::vector<double> lift_coefficients,
                       std::vector<double> drag_coefficients);
   AerofoilPerformance(std::string aerofoil_name,
+                      AircraftLiftingSurface lifting_surface,
                       std::ifstream performance_file);
+  double interpolate_lift(double angle_of_attack, double flap_angle = 0.0);
+  double interpolate_drag(double angle_of_attack, double flap_angle = 0.0);
 };
 AerofoilPerformance
 read_lifting_surface_performance(AircraftLiftingSurface lifting_surface);
