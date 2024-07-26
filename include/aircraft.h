@@ -5,6 +5,7 @@
 class Aircraft {
 private:
   BodyElement body_elements[8];
+  AerofoilPerformance aerofoil_performance;
   Matrix3x3<double> moment_of_inertia;
   Matrix3x3<double> moment_of_inertia_inverse;
   Vector<double> angular_velocity;
@@ -14,6 +15,7 @@ private:
 
   void fill_aircraft_properties(AircraftModel model_enum);
   void calculate_aircraft_mass_properties();
+  void load_aircraft_aerodynamic_properties();
 
 public:
   AircraftModel aircraft_model;

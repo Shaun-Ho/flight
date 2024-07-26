@@ -7,7 +7,10 @@ Aircraft::Aircraft(AircraftModel model) {
   // setting aircraft properties
   this->fill_aircraft_properties(model);
   this->calculate_aircraft_mass_properties();
+  this->load_aircraft_aerodynamic_properties();
 }
+
+Aircraft::~Aircraft() {}
 
 void Aircraft::fill_aircraft_properties(AircraftModel model_enum) {
   switch (model_enum) {
@@ -18,7 +21,6 @@ void Aircraft::fill_aircraft_properties(AircraftModel model_enum) {
     }
   }
 }
-Aircraft::~Aircraft() {}
 
 void Aircraft::calculate_aircraft_mass_properties() {
   // Calculating mass of aircraft
@@ -102,6 +104,11 @@ void Aircraft::calculate_aircraft_mass_properties() {
 
   this->moment_of_inertia = moment_of_inertia;
   this->moment_of_inertia_inverse = moment_of_inertia.inverse();
+};
+
+void Aircraft::load_aircraft_aerodynamic_properties() {
+  for (int i{0}; i < 8; i++) {
+  }
 };
 
 void Aircraft::custom_print() {
